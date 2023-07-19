@@ -1,0 +1,41 @@
+﻿@using AirlineDemo.Models
+@model IEnumerable<Flight>
+@{
+    
+    ViewBag.Title = "Flight";
+}
+
+<h2>Flight List</h2>
+@Html.Action("Index", "Cart")
+<table>
+    Flight
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Date</th>
+            <th>Departure</th>
+            <th>Arrival</th>
+        </tr>   
+        @foreach (var flight in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(flight.Code, "Detail", "Flights", new { flightCode = flight.Code }, null)</td>
+                <td>@flight.Date</td>
+                <td>@flight.Departure</td>
+                <td>@flight.Arrival</td>
+                <td>@Html.ActionLink("Add", "AddToVoucher", "Flights", new { flightCode = flight.Code }, null)</td>
+            </tr>
+        }
+    </thead>
+
+</table>
+
+@using (Html.BeginForm("Search", "Flights", FormMethod.Get))
+{
+    @Html.ValidationSummary()
+    <form>
+        @*@Html.TextBox("dateOfFlight")*@
+        <input type="datetime-local" id="DateOfFlight" name="DateOfFlight" />
+        <input type="submit" value="Search" />
+    </form>
+}

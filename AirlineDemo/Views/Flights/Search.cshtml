@@ -1,0 +1,42 @@
+﻿@using AirlineDemo.Models
+@model IEnumerable<Flight>
+
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+
+<table>
+    Flight
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Date</th>
+            <th>Departure</th>
+            <th>Arrival</th>
+        </tr>
+        @foreach (var flight in Model)
+        {
+            <tr>
+                <th>@flight.Code</th>
+                <th>@flight.Date</th>
+                <th>@flight.Departure</th>
+                <th>@flight.Arrival</th>
+            </tr>
+        }
+    </thead>
+
+</table>
+
+@using (Html.BeginForm("Search", "Flights", FormMethod.Get))
+{
+    @Html.ValidationSummary()
+    <form>
+        @*@Html.TextBox("dateOfFlight")*@
+        <input type="datetime-local" id="DateOfFlight" name="DateOfFlight" />
+        <input type="submit" value="Search" />
+    </form>
+    }

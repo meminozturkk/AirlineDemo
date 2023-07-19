@@ -1,0 +1,35 @@
+﻿@using AirlineDemo.Models
+@model IEnumerable<Flight>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@if (Model != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Date</th>
+                <th>Departure</th>
+                <th>Arrival</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flight in Model)
+            {
+                <tr>
+                    <td>@flight.Code</td>
+                    <td>@flight.Date</td>
+                    <td>@flight.Departure</td>
+                    <td>@flight.Arrival</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No flights in the cart.</p>
+}

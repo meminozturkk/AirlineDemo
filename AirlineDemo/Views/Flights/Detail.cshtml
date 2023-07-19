@@ -1,0 +1,23 @@
+﻿@using AirlineDemo.Models
+@model Flight
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Detail</h2>
+
+@Html.Label("Flight code:")
+@Model.Code
+<br />
+
+@Html.Label("Flight date:")
+@Model.Date
+<br />
+
+@Html.Label("Take off from:")
+@Model.Departure
+<br />
+
+@Html.Label("Lands to:")
+@Model.Arrival
+<br />
